@@ -26,6 +26,10 @@ def tensor_to_str(x: torch.Tensor):
         if x.numel() > 1:
             features.append(f'std={x.std().item()}')
 
+        n_zeroes = (x == 0.0).sum().item()
+        if n_zeroes > 0:
+            features.append(f'n_zeroes={n_zeroes}')
+
         return features
 
     def get_features(x: torch.Tensor):

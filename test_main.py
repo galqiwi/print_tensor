@@ -47,6 +47,12 @@ def test_tensor_to_str():
     )
     assert tensor_to_str(x) == 'Tensor(shape=(2,), sum=1, dtype=torch.bool, device=cpu)'
 
+    x = torch.tensor(
+        [-1.0, 0.0, 1.0],
+        dtype=torch.float32,
+    )
+    assert tensor_to_str(x) == 'Tensor(shape=(3,), min=-1.0, max=1.0, mean=0.0, std=1.0, n_zeroes=1, dtype=torch.float32, device=cpu)'
+
 
 if __name__ == '__main__':
     unittest.main()
