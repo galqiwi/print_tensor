@@ -15,16 +15,16 @@ def tensor_to_str(x: torch.Tensor):
     def get_finite_features(x: torch.Tensor):
         features = []
         if not x.dtype == torch.bool:
-            features.append(f'min={x.min()}')
-            features.append(f'max={x.max()}')
+            features.append(f'min={x.min().item()}')
+            features.append(f'max={x.max().item()}')
 
         if not isinstance(x, torch.FloatTensor):
-            features.append(f'sum={x.sum()}')
+            features.append(f'sum={x.sum().item()}')
             return features
 
-        features.append(f'mean={x.mean()}')
+        features.append(f'mean={x.mean().item()}')
         if x.numel() > 1:
-            features.append(f'std={x.std()}')
+            features.append(f'std={x.std().item()}')
 
         return features
 
